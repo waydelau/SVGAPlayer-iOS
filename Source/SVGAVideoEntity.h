@@ -38,4 +38,9 @@
 - (void)saveWeakCache:(NSString *)cacheKey;
 @end
 
+@interface UIImage (SVGAVideoEntity)
+
+-(UIImage *)imageByResizeToSize:(CGSize)size;
+
+@end
 

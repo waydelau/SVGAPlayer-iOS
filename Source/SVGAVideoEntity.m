@@ -248,11 +248,6 @@ static dispatch_semaphore_t videoSemaphore;
 
 @end
 
-@interface UIImage (SVGAVideoEntity)
-
--(UIImage *)imageByResizeToSize:(CGSize)size;
-
-@end
 
 @implementation UIImage (SVGAVideoEntity)
 
