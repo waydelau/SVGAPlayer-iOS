@@ -177,11 +177,7 @@ static dispatch_semaphore_t videoSemaphore;
             } else {
                 UIImage *image = [[UIImage alloc] initWithData:protoImages[key] scale:2.0];
                 if (image != nil) {
-                    // fix：https://github.com/svga/SVGAPlayer-iOS/issues/117
-                    image = [image imageByResizeToSize:image.size];
-                    if (image != nil) {
-                        [images setObject:image forKey:key];
-                    }
+                    [images setObject:image forKey:key];
                 }
             }
         }
@@ -248,16 +244,3 @@ static dispatch_semaphore_t videoSemaphore;
 
 @end
 
-
-@implementation UIImage (SVGAVideoEntity)
-
--(UIImage *)imageByResizeToSize:(CGSize)size {
-    if (size.width <= 0 || size.height <= 0) return nil;
-    UIGraphicsBeginImageContextWithOptions(size, NO, self.scale);
-    [self drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
-
-@end
